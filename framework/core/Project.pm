@@ -925,7 +925,7 @@ sub run_randoop {
     # and set appropriate arguments.
     my $log = `java -cp $TESTGEN_LIB_DIR/randoop-current.jar randoop.main.Main`;
     if (($log =~ /minimize/) == 1) {
-      if (($log =~ /4.0/) == 1) {
+      if (($log =~ /4.0/) == 1 or ($log =~ /4.1/) == 1) {
 #       print "new version \n";
         $config = "$config --time-limit=$timeout --flaky-test-behavior=output";
       } else {
