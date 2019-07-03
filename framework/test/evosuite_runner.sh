@@ -8,7 +8,7 @@ source test.include
 init
 
 if [ "$#" -ne 5 ]; then
-    die "usage: `basename "$0"` <project_name> <bug_id>"
+    die "usage: `basename "$0"` <project_name> <bug_id> <evo_dir> <suite_src> <suite_num>"
 fi
 
 pid=$1
@@ -38,9 +38,9 @@ check_target_classes() {
 
 # Run EvoSuite for all modified classes and check whether all target classes are tested
 vid=${bid}f
-start=`date +%s` 
+# start=`date +%s` 
 run_evosuite.pl -p $pid -v $vid -n $suite_num -o $evo_dir -cbranch -b 180 -a 120 || die "run EvoSuite (modified classes) on $pid-$vid"
-echo $(( `date +%s` - start ))
+# echo $(( `date +%s` - start ))
 check_target_classes $vid $bid "modified_classes"
 
 
